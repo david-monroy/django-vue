@@ -9,9 +9,11 @@
                    :fields="fields">
 
                     <template
-                    v-slot:cell(action)>
+                    v-slot:cell(action)="row">
                         <b-button size="sm"
-                        variant="primary">
+                        variant="primary"
+                        :to="{ name: 'EditParticipante', params: { id: row.item.id } }"
+                        >
                             Editar
                         </b-button>
 
