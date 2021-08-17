@@ -3,11 +3,23 @@
       <div class="row">
           <div class="col text-left">
               <h2>Listado de participantes</h2>
-                {{participantes}}
               <div class="col-md-12">
                   <b-table striped hover
                    :items="participantes"
                    :fields="fields">
+
+                    <template
+                    v-slot:cell(action)>
+                        <b-button size="sm"
+                        variant="primary">
+                            Editar
+                        </b-button>
+
+                        <b-button size="sm"
+                        variant="danger">
+                            Eliminar
+                        </b-button>
+                    </template>
 
                   </b-table>
               </div>
@@ -25,7 +37,7 @@ export default {
             fields: [
                 { key: 'name', label: 'Nombre' },
                 { key: 'lastname', label: 'Apellido' },
-                { key: 'action', label: 'Acción' },
+                { key: 'action', label: '' },
             ],
             participantes: []
         }
