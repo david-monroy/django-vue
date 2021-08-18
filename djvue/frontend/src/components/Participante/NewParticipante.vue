@@ -2,7 +2,7 @@
   <div class="container">
       <div class="row">
           <div class="col text-left">
-              <h2>Editar participante</h2>
+              <h2>Nuevo participante</h2>
           </div>
       </div>
 
@@ -47,7 +47,7 @@
                               <div class="col text-left">
                                   <b-button type="submit"
                                   variant="primary">
-                                    Guardar cambios
+                                    Crear
                                   </b-button>
                                   <b-button type="submit"
                                   class="btn-large-space"
@@ -73,7 +73,6 @@ import swal from 'sweetalert'
 export default {
     data(){
         return {
-            id: this.$route.params.id,
             form: {
                 name: '',
                 lastname: ''
@@ -84,33 +83,21 @@ export default {
         onSubmit(evt){
             evt.preventDefault()
 
-            const path = `http://localhost:8000/api/v1/participantes/${this.id}/`
+            const path = 'http://localhost:8000/api/v1/participantes/'
 
-            axios.put(path, this.form).then((response) => {
+            axios.post(path, this.form).then((response) => {
                 this.form.name = response.data.name
                 this.form.lastname = response.data.lastname
                 
-                swal("Participante actualizado satisfactoriamente", "", "success")
+                swal("Participante creado satisfactoriamente", "", "success")
             })
             .catch((err) => {
-                console.log(err)
+                swal("El participante no ha sido creado", "", "error")
             })
         },
-
-        getParticipante(){
-            const path = `http://localhost:8000/api/v1/participantes/${this.id}/`
-
-            axios.get(path).then((response) => {
-                this.form.name = response.data.name
-                this.form.lastname = response.data.lastname
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-        }
     },
     created(){
-        this.getParticipante()
+
     }
 }
 </script>

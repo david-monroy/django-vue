@@ -4,6 +4,8 @@ import HelloWorld from '@/components/HelloWorld'
 
 import ListParticipante from '@/components/Participante/ListParticipante'
 import EditParticipante from '@/components/Participante/EditParticipante'
+import DeleteParticipante from '@/components/Participante/DeleteParticipante'
+import NewParticipante from '@/components/Participante/NewParticipante'
 
 Vue.use(Router)
 
@@ -20,9 +22,19 @@ export default new Router({
       component: ListParticipante
     },
     {
-      path: `/participantes/:id/edit`,
+      path: '/participantes',
       name: 'EditParticipante',
       component: EditParticipante
+    },
+    {
+      path: `/participantes/:id/delete`,
+      name: 'DeleteParticipante',
+      component: DeleteParticipante
+    },
+    {
+      path: `/participantes/new`,
+      name: 'NewParticipante',
+      component: NewParticipante
     }
   ],
   mode: 'history'

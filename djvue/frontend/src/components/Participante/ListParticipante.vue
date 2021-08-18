@@ -2,7 +2,18 @@
   <div class="container">
       <div class="row">
           <div class="col text-left">
-              <h2>Listado de participantes</h2>
+              <div>
+                  <h2>Listado de participantes</h2>
+                  <b-button
+                  size="sm"
+                  :to="{ name: 'NewParticipante' }"
+                  variant="primary">
+                    Nuevo participante
+                  </b-button>
+              </div>
+              
+              <br>
+
               <div class="col-md-12">
                   <b-table striped hover
                    :items="participantes"
@@ -18,7 +29,9 @@
                         </b-button>
 
                         <b-button size="sm"
-                        variant="danger">
+                        variant="danger"
+                        :to="{ name: 'DeleteParticipante', params: { id: row.item.id } }"
+                        >
                             Eliminar
                         </b-button>
                     </template>
