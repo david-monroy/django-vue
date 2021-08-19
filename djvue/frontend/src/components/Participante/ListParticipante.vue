@@ -8,6 +8,7 @@
                   size="sm"
                   :to="{ name: 'NewParticipante' }"
                   variant="primary">
+                    
                     Nuevo participante
                   </b-button>
               </div>
